@@ -1,2 +1,3 @@
 # C-language
-This repo contains C projects, you are most welcome to it today
+This repo contains C projects,
+You can find me at kcjesuschrist513@gmail.com...i welcome you

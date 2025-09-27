@@ -1,175 +1,101 @@
 #include <stdio.h>
 #include <stdbool.h>
+
+
+char operator;
+double number1, number2;
+int permission = 1;
+double result;
+int choice;
 int main()
 {
     printf("\n====Simple Calculator====\n");
-    char operator;
-    double num1, num2, another_value;
-    int permission;
-    int allow;
-    double result = 0.0;
-    double new_result = 0.0;
-    double last_result = 0.0;
+    printf("\nOPERATIONS\n");
+    printf("\n1. Addition (+)");
+    printf("\n2. Subtraction (-)");
+    printf("\n3. Multiplication (*)");
+    printf("\n4. Division  (/)");
+    printf("\n5. Modulus (%)");
 
-    while (1)
+    do
     {
-        printf("\nOPTIONS AVAILABLE\n");
-        printf("\n1. Do you want to close the calculator app?");
-        printf("\n2. Go ahead with the calculator\n");
-
-        printf("Enter the option you want, please among (1,2): ");
-        scanf("%d", &allow);
-
-        if (allow == 1)
+        if (permission)
         {
-            printf("Quitted the calculator, safe journey");
-            break;
-        }
-        else if (allow == 2)
-        {
-            printf("\n1. New operation");
-            printf("\n2. Continue with the last answer\n\n");
-            printf("Enter the option you want among (1,2): ");
-            scanf("%d", &permission);
+            printf("\nEnter the operator among ['+', '-', '*', '/', '%']: ");
+            scanf("%s", &operator);
 
-            if (permission == 1)
-            {
-                printf("\nOPERATIONS\n");
-                printf("\n1. Addition (+)");
-                printf("\n2. Subtraction (-)");
-                printf("\n3. Multiplication (*)");
-                printf("\n4. Division  (/)");
-                printf("\n5. Modulus (%%)\n");
+            printf("\nEnter the first number; ");
+            scanf("%lf", &number1);
 
-                printf("\nEnter the operator among ('+', '-', '*', '/', '%%'): ");
-                scanf("%s", &operator);
-
-                printf("\nEnter the first number; ");
-                scanf("%lf", &num1);
-
-                printf("\nEnter the second number; ");
-                scanf("%lf", &num2);
-
-                switch (operator)
-                {
-                case '+':
-                    result = num1 + num2;
-                    printf("The operation %.1lf + %.1lf = %.3lf", num1, num2, result);
-                    break;
-
-                case '-':
-                    result = num1 - num2;
-                    printf("The operation %.1lf - %.1lf = %.3lf", num1, num2, result);
-                    break;
-
-                case '*':
-                    result = num1 * num2;
-                    printf("The operation %.1lf * %.1lf = %.3lf", num1, num2, result);
-                    break;
-
-                case '/':
-                    if (num2 == 0)
-                    {
-                        printf("Error! Division by zero.");
-                    }
-                    else
-                    {
-                        result = num1 / num2;
-                        printf("The operation %.1lf / %.1lf = %.3lf", num1, num2, result);
-                    }
-                    break;
-                case '%':
-                    result = (int)num1 % (int)num2;
-                    printf("The operation %.1lf %% %.1lf = %.3lf", num1, num2, result);
-                    break;
-
-                // operator doesn't match any case constant +, -, *, /
-                default:
-                    printf("Error! operator is not correct");
-                    break;
-                }
-
-                new_result += result;
-                printf("\nThe answer %.3lf is stored successfully\n", new_result);
-
-                printf("\n1. New operation");
-                printf("\n2. Continue with the last answer\n\n");
-                printf("Enter the option you want among (1,2): ");
-                scanf("%d", &permission);
-            }
-            if (permission == 1)
-            {
-                new_result = 0.0;
-                continue;
-            }
-
-            if (permission == 2)
-            {
-                printf("\nOPERATIONS\n");
-                printf("\n1. Addition (+)");
-                printf("\n2. Subtraction (-)");
-                printf("\n3. Multiplication (*)");
-                printf("\n4. Division  (/)");
-                printf("\n5. Modulus (%%)");
-
-                printf("\nEnter the operator among ['+', '-', '*', '/', '%%']: ");
-                scanf("%s", &operator);
-
-                printf("\nEnter the value; ");
-                scanf("%lf", &another_value);
-
-                switch (operator)
-                {
-                case '+':
-                    result = new_result + another_value;
-                    printf("The operation %.1lf + %.1lf = %.3lf", result, another_value, new_result);
-                    break;
-
-                case '-':
-                    result = new_result - another_value;
-                    printf("The operation %.1lf - %.1lf = %.3lf", result, another_value, new_result);
-                    break;
-
-                case '*':
-                    result = new_result * another_value;
-                    printf("The operation %.1lf * %.1lf = %.3lf", result, another_value, new_result);
-                    break;
-
-                case '/':
-                    if (another_value == 0)
-                    {
-                        printf("Error! Division by zero.");
-                    }
-                    else
-                    {
-                        result = new_result / num2;
-                        printf("The operation %.1lf / %.1lf = %.3lf", result, num2, new_result);
-                    }
-                    break;
-                case '%':
-                    result = (int)new_result % (int)another_value;
-                    printf("The operation %.1lf %% %.1lf = %.3lf", result, another_value, new_result);
-                    break;
-
-                    last_result = result;
-                    printf("The operation of %lf %c %lf is %lf", result, operator, another_value, last_result);
-                    last_result = new_result;
-
-                    // operator doesn't match any case constant +, -, *, /
-                }
-            }
-            else
-            {
-                printf("invalid input, your answer is not among options!");
-                break;
-            }
+            printf("\nEnter the second number; ");
+            scanf("%lf", &number2);
         }
         else
         {
-            printf("invalid input, your answer is not among options!");
+            number1 = result;
+            printf("The stored value is %.3lf\n", number1);
+            printf("\nEnter the operator among ['+', '-', '*', '/', '%']: ");
+            scanf("%s", &operator);
+
+            printf("\nEnter the number; ");
+            scanf("%lf", &number2);
+        }
+        switch (operator)
+        {
+        case '+':
+            result = number1 + number2;
+            printf("The operation %.1lf + %.1lf = %.3lf", number1, number2, result);
+            break;
+
+        case '-':
+            result = number1 - number2;
+            printf("The operation %.1lf - %.1lf = %.3lf", number1, number2, result);
+            break;
+        case '*':
+            result = number1 * number2;
+            printf("The operation %.1lf * %.1lf = %.3lf", number1, number2, result);
+            break;
+
+        case '/':
+            if (number2 == 0)
+            {
+                printf("Error! Division by zero.");
+            }
+            else
+            {
+                result = number1 / number2;
+                printf("The operation %.1lf / %.1lf = %.3lf", number1, number2, result);
+            }
+            break;
+        case '%':
+            result = (int)number1 % (int)number2;
+            printf("The operation %.1lf %% %.1lf = %.3lf", number1, number2, result);
+            break;
+
+        // operator doesn't match any case constant +, -, *, /
+        default:
+            printf("Error! operator is not correct");
             break;
         }
-        printf("\nThank you for collaborating with BCS_GRP_6\n");
-    }
+        printf("\n\nOPERATIONS");
+        printf("\n1. New operation");
+        printf("\n2. Continue with the last answer\n\n");
+        printf("Enter the option you want among (1,2): ");
+        scanf("%d", &choice);
+        if (choice == 1)
+        {
+            permission = 1;
+        }
+        else if (choice == 2)
+        {
+            permission = 0;
+        }
+        else
+        {
+            printf("\nOption entered not among\n");
+            break;
+        }
+    } while (1);
+    printf("\nThank you for collaborating with BCS_GRP_6, we appreciate! \n");
     return 0;
 }

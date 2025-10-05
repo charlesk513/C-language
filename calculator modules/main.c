@@ -6,6 +6,7 @@
 
 int main()
 {
+    double result;
     printf("\n====Simple Calculator====\n");
     printf("\nOPERATIONS\n");
     printf("\n1. Addition (+)");
@@ -18,24 +19,66 @@ int main()
         if (permission)
         {
             printf("\nEnter the operator among ['+', '-', '*', '/', '%']: ");
-            scanf("%s", &operator);
+            scanf(" %c", &operator);
+            if (operator == '+' || operator == '-' || operator == '*' || operator == '/' || operator == '%')
+            {
+                // valid operator, do nothing and continue with the lower codes
+                        }
+            else
+            {
+                printf("Sythax error, value entered not an operator\n");
+                while (getchar() != '\n')
+                    ;
+                continue; // restart the loop
+            }
 
             printf("\nEnter the first number; ");
-            scanf("%f", &num1);
+            if (scanf("%f", &num1) != 1)  // checks if scanf() has returned a value that is not 1
+            { // clear the invalid response
+                printf("Sythax error, value entered not a number\n");
+                while (getchar() != '\n')
+                    ;
+                continue; // restart the loop
+            }
 
             printf("\nEnter the second number; ");
-            scanf("%f", &num2);
+            if (scanf("%f", &num2) != 1)
+            { // clear the invalid  response
+                printf("\nSythax error, value entered not a number\n");
+                while (getchar() != '\n')
+                    ;
+                continue; // restart the loop
+            } 
         }
         else
         {
             num1 = result;
-            printf("The stored value is %.3f\n", num1);
+            printf("\nThe stored value is %.3f\n", num1);
+
             printf("\nEnter the operator among ['+', '-', '*', '/', '%']: ");
             scanf("%s", &operator);
+            if (operator == '+' || operator == '-' || operator == '*' || operator == '/' || operator == '%')
+            {
+                // valid operator, do nothing and continue
+            }
+            else
+            {
+                printf("Sythax error, value entered not an operator\n");
+                while (getchar() != '\n')
+                    ;
+                continue; // restart the loop
+            }
 
             printf("\nEnter the number; ");
-            scanf("%f", &num2);
+            if (scanf("%f", &num2) != 1)
+            { // clear the invalid response
+                printf("\nSythax error, value entered not a number\n");
+                while (getchar() != '\n')
+                    ;
+                continue; // restart the loop
+            }
         }
+        // the switch coditions govern the operator to be used, it calls functions from the source file
         switch (operator)
         {
         case '+':
@@ -79,16 +122,17 @@ int main()
         printf("\n2. Continue with the last answer\n\n");
         printf("Enter the option you want among (1,2): ");
         scanf("%d", &choice);
+        // This operation updates the value of the permission variable to manage the type of operation for the next loop
         if (choice == 1)
         {
             permission = 1;
         }
-        else if (choice == 2)
+        else if (choice == 2) // this option updates variable permission to 0 which is false in booleans hence execution of the else part in the first if condition
         {
             permission = 0;
         }
         else
-        {
+        { // This statement breaks the loop when the choice entered is neither 1 nor 2
             printf("\nOption entered not among\n");
             break;
         }

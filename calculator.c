@@ -22,24 +22,66 @@ int main()
         if (permission)
         {
             printf("\nEnter the operator among ['+', '-', '*', '/', '%']: ");
-            scanf("%s", &operator);
+            scanf(" %c", &operator);
+            if (operator == '+' || operator == '-' || operator == '*' || operator == '/' || operator == '%')
+            {
+                // valid operator, do nothing and continue with the lower codes
+                        }
+            else
+            {
+                printf("Sythax error, value entered not an operator\n");
+                while (getchar() != '\n')
+                    ;
+                continue; // restart the loop
+            }
 
             printf("\nEnter the first number; ");
-            scanf("%lf", &number1);
+            if (scanf("%f", &num1) != 1)  // checks if scanf() has returned a value that is not 1
+            { // clear the invalid response
+                printf("Sythax error, value entered not a number\n");
+                while (getchar() != '\n')
+                    ;
+                continue; // restart the loop
+            }
 
             printf("\nEnter the second number; ");
-            scanf("%lf", &number2);
+            if (scanf("%f", &num2) != 1)
+            { // clear the invalid  response
+                printf("\nSythax error, value entered not a number\n");
+                while (getchar() != '\n')
+                    ;
+                continue; // restart the loop
+            } 
         }
         else
         {
-            number1 = result;
-            printf("The stored value is %.3lf\n", number1);
+            num1 = result;
+            printf("\nThe stored value is %.3f\n", num1);
+
             printf("\nEnter the operator among ['+', '-', '*', '/', '%']: ");
             scanf("%s", &operator);
+            if (operator == '+' || operator == '-' || operator == '*' || operator == '/' || operator == '%')
+            {
+                // valid operator, do nothing and continue
+            }
+            else
+            {
+                printf("Sythax error, value entered not an operator\n");
+                while (getchar() != '\n')
+                    ;
+                continue; // restart the loop
+            }
 
             printf("\nEnter the number; ");
-            scanf("%lf", &number2);
+            if (scanf("%f", &num2) != 1)
+            { // clear the invalid response
+                printf("\nSythax error, value entered not a number\n");
+                while (getchar() != '\n')
+                    ;
+                continue; // restart the loop
+            }
         }
+        // the switch coditions govern the operator to be used, it calls functions from the source file
         switch (operator)
         {
         case '+':
